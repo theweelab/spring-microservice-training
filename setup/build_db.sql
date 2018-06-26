@@ -1,6 +1,3 @@
-create database reservation_system with owner = 'postgres';
-\connect reservation_system;
-
 --
 -- PostgreSQL database dump
 --
@@ -337,14 +334,6 @@ ALTER TABLE inventory OWNER TO postgres;
 SET search_path = book, pg_catalog;
 
 --
--- Data for Name: booking_record; Type: TABLE DATA; Schema: book; Owner: postgres
---
-
-INSERT INTO book.booking_record (id, booking_date, destination, fare, flight_date, flight_number, origin, status) VALUES (1, '2017-11-09 13:00:19.035', 'SFO', '101', '22-JAN-16', 'BF101', 'NYC', 'BOOKING_CONFIRMED');
-INSERT INTO book.booking_record (id, booking_date, destination, fare, flight_date, flight_number, origin, status) VALUES (2, '2017-11-09 13:02:13.328', 'SFO', '101', '22-JAN-16', 'BF101', 'NYC', 'BOOKING_CONFIRMED');
-
-
---
 -- Name: hibernate_sequence; Type: SEQUENCE SET; Schema: book; Owner: postgres
 --
 
@@ -356,7 +345,7 @@ SELECT pg_catalog.setval('hibernate_sequence', 11, true);
 --
 
 INSERT INTO book.inventory (id, available, flight_date, flight_number) VALUES (1, 100, '22-JAN-16', 'BF100');
-INSERT INTO book.inventory (id, available, flight_date, flight_number) VALUES (2, 98, '22-JAN-16', 'BF101');
+INSERT INTO book.inventory (id, available, flight_date, flight_number) VALUES (2, 100, '22-JAN-16', 'BF101');
 INSERT INTO book.inventory (id, available, flight_date, flight_number) VALUES (3, 100, '22-JAN-16', 'BF102');
 INSERT INTO book.inventory (id, available, flight_date, flight_number) VALUES (4, 100, '22-JAN-16', 'BF103');
 INSERT INTO book.inventory (id, available, flight_date, flight_number) VALUES (5, 100, '22-JAN-16', 'BF104');
@@ -369,19 +358,11 @@ INSERT INTO book.inventory (id, available, flight_date, flight_number) VALUES (7
 -- Data for Name: passenger; Type: TABLE DATA; Schema: book; Owner: postgres
 --
 
-INSERT INTO book.passenger (id, first_name, gender, last_name, booking_id) VALUES (1, 'Gean', 'Male', 'Franc', 1);
-INSERT INTO book.passenger (id, first_name, gender, last_name, booking_id) VALUES (2, 'Gavin', 'Male', 'Franc', 2);
-
-
 SET search_path = checkin, pg_catalog;
 
 --
 -- Data for Name: check_in_record; Type: TABLE DATA; Schema: checkin; Owner: postgres
 --
-
-INSERT INTO checkin.check_in_record (id, booking_id, check_in_time, first_name, flight_date, flight_number, last_name, seat_number) VALUES (1, 1, '2017-11-09 12:57:12.381', 'Gean', '22-JAN-16', 'BF101', 'Franc', '28A');
-INSERT INTO checkin.check_in_record (id, booking_id, check_in_time, first_name, flight_date, flight_number, last_name, seat_number) VALUES (2, 2, '2017-11-09 13:02:14.819', 'Gavin', '22-JAN-16', 'BF101', 'Franc', '28C');
-
 
 --
 -- Name: hibernate_sequence; Type: SEQUENCE SET; Schema: checkin; Owner: postgres
@@ -567,6 +548,63 @@ ALTER TABLE ONLY flight
 
 ALTER TABLE ONLY flight
     ADD CONSTRAINT fk_mqdku2ku3913h6iq0t28a0fw6 FOREIGN KEY (fare_id) REFERENCES fares(id);
+
+
+
+--- SEQUENCE
+
+CREATE SEQUENCE book.seq_bookingrecord
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+CREATE SEQUENCE book.seq_inventory
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+CREATE SEQUENCE book.seq_passenger
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+--
+CREATE SEQUENCE checkin.seq_checkinrecord
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+--
+CREATE SEQUENCE search.seq_flight
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+CREATE SEQUENCE search.seq_inventorysearch
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+CREATE SEQUENCE search.seq_searchfares
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+--
+CREATE SEQUENCE fares.seq_fare
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;           
+
 
 
 --
