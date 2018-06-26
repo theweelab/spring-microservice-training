@@ -6,11 +6,11 @@ Container Docker
 ----------------------------------------------
 docker pull postgres
 
-docker run --name postgres-msa -e POSTGRES_PASSWORD=mysecretpassword -d postgres
+docker run --name postgres-msa -e POSTGRES_PASSWORD=mysecretpassword -p 5672:5672 -d postgres
 
-docker pull rabbitmq
+docker pull rabbitmq:3-management
 
-docker run -d --hostname my-rabbit --name rabbit-msa rabbitmq:3-management -p 5672:5672 -p 15672:15672
+docker run -d --hostname my-rabbit --name rabbit-msa -p 5672:5672 -p 15672:15672 rabbitmq:3-management
 
 Database Configuration
 ----------------------------------------------
