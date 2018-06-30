@@ -1,6 +1,6 @@
 # Status
 
-[![Build Status](https://travis-ci.org/theweelab/spring-microservice-training.svg?branch=master)](https://travis-ci.org/theweelab/spring-microservice-training)
+[![Build Status](https://travis-ci.org/theweelab/spring-microservice-training.svg?branch=baggage)](https://travis-ci.org/theweelab/spring-microservice-training)
 
 # spring-microservice-training
 
