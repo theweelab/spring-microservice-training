@@ -15,6 +15,7 @@
 	<packaging>pom</packaging>
 
 	<modules>
+		<module>baggage</module>
 		<module>book</module>
 		<module>book-apigateway</module>
 		<module>search</module>
@@ -26,6 +27,7 @@
 		<module>config-server</module>
 		<module>eurekaserver</module>
 		<module>website</module>
+		
 	</modules>
 
 	<!-- ==================================================================================================== -->
