@@ -16,6 +16,7 @@
 
 	<modules>
 		<module>baggage</module>
+		<module>baggage-apigateway</module>
 		<module>book</module>
 		<module>book-apigateway</module>
 		<module>search</module>
