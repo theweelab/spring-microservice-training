@@ -117,12 +117,15 @@ public class BrownFieldSiteController {
 		long checkinId = checkInClient.postForObject("http://checkin-apigateway/api/checkin/create", checkIn,
 				long.class);
 		model.addAttribute("message", "Checked In, Seat Number is 28c , checkin id is " + checkinId);
+		UIData uiData = new UIData();
+		uiData.setCheckinid(checkinId);
+		model.addAttribute("uidata", uiData);
 		return "checkinconfirm";
 	}
 
-	@RequestMapping(value = "/baggage/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/baggage/add/checkin/{checkinid}", method = RequestMethod.POST)
 	public String addBaggage(@ModelAttribute UIData uiData, Model model) {
-
-		return "baggageConfirm";
+		model.addAttribute("message", "Baggage was added to your flight");
+		return "baggageconfirm";
 	}
 }

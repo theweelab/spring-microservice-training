@@ -17,7 +17,7 @@
 	</nav>
 	<div align="center" class="form-style-8">
 		<h2>Check In Confirmation</h2>
-		<form action="#" th:action="@{/baggage/add/checkin/checkin-id}"
+		<form action="#" th:action="@{/baggage/add/checkin/{checkinid}(checkinid=${uidata.checkinid})}"
 			th:object="${uidata}" method="post">
 			<div align="center" style="color: green">
 				<h3 th:text="${message}"></h3>
@@ -28,7 +28,7 @@
 					<tr>
 						<td>Baggage weight</td>
 						<td><input type="number"
-							th:field="${uidata.baggage.weight}" /></td>
+							th:field="${uidata.baggageWeight}" /></td>
 					</tr>
 				</table>
 				<input type="submit" value="Add baggage" /> 
