@@ -24,7 +24,7 @@ Database Configuration
 - Under 'postgres' user, execute setup/build_db.sql to set up new DB and load dummy data or do manually by  
 + In checkin/checkin_record add new column 'baggage_status'  
 + Create new baggage schema  
-+ Create sequences seq_baggagerecord: incerement 1 witout minimum and maximum  
++ Create sequences seq_baggagerecord: incerement 1 without minimum and maximum  
 + Create table baggage_record [id: bigint, baggage_weight: character varying, checkin_id: bigin] with postgres owner  
 
 Build all projects using the pom.xml at the root level. 
