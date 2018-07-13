@@ -45,9 +45,7 @@ public class CheckinComponent {
 			logger.info("NO CHECKIN FOUND, ignoring FOR CHECKIN ID.." + checkinId);
 		}else { 
 			logger.info("CHECKIN FOUND, UPDATING BAGGAGE STATUS FOR: " + checkinId);
-			record.setBaggageStatus(baggageStatus);
-			checkinRepository.save(record);
-			logger.info("CHECKIN FOUND, UPDATED BAGGAGE STATUS FOR: " + checkinId + " CHECKIN BAGGAGE STATUS: " + record.getBaggageStatus());
+			logger.info("CHECKIN FOUND, UPDATED BAGGAGE STATUS FOR: " + checkinId);
 		}
 	}
 }	

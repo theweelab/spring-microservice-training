@@ -4,16 +4,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "baggage_record")
 public class BaggageRecord {
 
 	int baggageWeight;
 	long checkinId;
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "baggage_record_generator")
-	@SequenceGenerator(name = "baggage_record_generator", sequenceName = "seq_baggagerecord", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	long id;
 	
 	public BaggageRecord() {
