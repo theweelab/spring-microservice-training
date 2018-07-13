@@ -27,6 +27,9 @@ public class BrownFieldSiteController {
 
 	@Autowired
 	RestTemplate checkInClient;
+	
+	@Autowired
+	RestTemplate baggageClient;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String greetingForm(Model model) {
@@ -124,8 +127,15 @@ public class BrownFieldSiteController {
 	}
 
 	@RequestMapping(value = "/baggage/add/checkin/{checkinid}", method = RequestMethod.POST)
-	public String addBaggage(@ModelAttribute UIData uiData, Model model) {
-		model.addAttribute("message", "Baggage was added to your flight");
+	public String addBaggage(@ModelAttribute UIData uiData, Model model, @PathVariable Long checkinid) {
+		
+		//TODO
+		//Attach check in id to baggage record
+		//Save baggage record
+		
+		BaggageRecord baggageRecord = new BaggageRecord(uiData.getBaggageWeight(), checkinid);
+		long baggageId = baggageClient.postForObject("http://baggage-apigateway/api/baggage/create", baggageRecord, long.class);
+		model.addAttribute("message", "Baggage was added to your flight. Code: " + baggageId);
 		return "baggageconfirm";
 	}
 }

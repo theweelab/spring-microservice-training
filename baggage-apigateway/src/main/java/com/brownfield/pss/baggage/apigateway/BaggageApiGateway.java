@@ -6,17 +6,19 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+@EnableZuulProxy
+@EnableDiscoveryClient
 @SpringBootApplication
-@EnableDiscoveryClient 
 @EnableSwagger2 
-public class Application implements CommandLineRunner {
-	private static final Logger logger = LoggerFactory.getLogger(Application.class);
+public class BaggageApiGateway implements CommandLineRunner {
+	private static final Logger logger = LoggerFactory.getLogger(BaggageApiGateway.class);
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+		SpringApplication.run(BaggageApiGateway.class, args);
 	}
 	
 	@Override
