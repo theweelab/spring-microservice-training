@@ -21,6 +21,7 @@ public class CheckInRecord {
     Date checkInTime;
     String flightNumber;
     String flightDate;
+    String baggageStatus;
     long bookingId;
  
     public CheckInRecord(){
@@ -91,11 +92,19 @@ public class CheckInRecord {
 		this.checkInTime = checkInTime;
 	}
 
+	public String getBaggageStatus() {
+		return baggageStatus;
+	}
+
+	public void setBaggageStatus(String baggageStatus) {
+		this.baggageStatus = baggageStatus;
+	}
+
 	@Override
 	public String toString() {
 		return "CheckInRecord [id=" + id + ", lastName=" + lastName + ", firstName=" + firstName + ", seatNumber="
 				+ seatNumber + ", checkInTime=" + checkInTime + ", flightNumber=" + flightNumber + ", flightDate="
-				+ flightDate + "]";
+				+ flightDate + ", baggageStatus=" + baggageStatus + "]";
 	}
     
     

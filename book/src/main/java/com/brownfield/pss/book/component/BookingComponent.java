@@ -98,6 +98,7 @@ public class BookingComponent {
 			logger.info("NO BOOKING FOUND, ignoring FOR BOOKING ID.." + bookingId);
 		}else { 
 			record.setStatus(status);
+			bookingRepository.save(record);
 		}
 	}
 	
