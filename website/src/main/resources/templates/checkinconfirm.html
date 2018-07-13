@@ -1,24 +1,39 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>www.flybrownfield.com</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta charset="utf-8"/>
-    <link href="/css/main.css" th:href="@{/css/main.css}" rel="stylesheet" media="screen"/>
+<title>www.flybrownfield.com</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta charset="utf-8" />
+<link href="/css/main.css" th:href="@{/css/main.css}" rel="stylesheet"
+	media="screen" />
 </head>
 <body>
 	<nav>
-       <ul>
-          <li>BrownField Airline </li>
-          <li><a th:href="@{/}">Search</a></li>
-           <li><a th:href="@{/search-booking}">CheckIn</a></li>
-        </ul>
-    </nav> 
-     <div align="center" class="form-style-8">
-     <h2>Check In Confirmation</h2>
-			<div align="center" style="color:green">
-				<h3  th:text="${message}"> </h3>
+		<ul>
+			<li>BrownField Airline</li>
+			<li><a th:href="@{/}">Search</a></li>
+			<li><a th:href="@{/search-booking}">CheckIn</a></li>
+		</ul>
+	</nav>
+	<div align="center" class="form-style-8">
+		<h2>Check In Confirmation</h2>
+		<form action="#" th:action="@{/baggage/add/checkin/{checkinid}(checkinid=${uidata.checkinid})}"
+			th:object="${uidata}" method="post">
+			<div align="center" style="color: green">
+				<h3 th:text="${message}"></h3>
 			</div>
+			<div>
+
+				<table>
+					<tr>
+						<td>Baggage weight</td>
+						<td><input type="number"
+							th:field="${uidata.baggageWeight}" /></td>
+					</tr>
+				</table>
+				<input type="submit" value="Add baggage" /> 
+			</div>
+		</form>
 	</div>
-  </body>
+</body>
 </html>

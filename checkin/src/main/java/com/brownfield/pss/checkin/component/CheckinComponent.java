@@ -29,8 +29,8 @@ public class CheckinComponent {
 		long id = checkinRepository.save(checkIn).getId();
 		logger.info("Successfully saved checkin ");
 		//send a message back to booking to update status
-		logger.info("Sending booking id "+ id);
-		sender.send(id);	
+		logger.info("Sending booking id "+ checkIn.getBookingId());
+		sender.send(checkIn.getBookingId());	
 		return id;
 		
 	}
@@ -38,5 +38,16 @@ public class CheckinComponent {
 	public CheckInRecord getCheckInRecord(long id){
 		return checkinRepository.findOne(id);
 	}
-	
+
+	public void updateBaggageStatus(String baggageStatus, long checkinId) {
+		CheckInRecord record = this.getCheckInRecord(checkinId);
+		if(record == null) {
+			logger.info("NO CHECKIN FOUND, ignoring FOR CHECKIN ID.." + checkinId);
+		}else { 
+			logger.info("CHECKIN FOUND, UPDATING BAGGAGE STATUS FOR: " + checkinId);
+			record.setBaggageStatus(baggageStatus);
+			checkinRepository.save(record);
+			logger.info("CHECKIN FOUND, UPDATED BAGGAGE STATUS FOR: " + checkinId + " CHECKIN BAGGAGE STATUS: " + record.getBaggageStatus());
+		}
+	}
 }	
